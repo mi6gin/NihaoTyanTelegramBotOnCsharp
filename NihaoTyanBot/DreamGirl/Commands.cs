@@ -29,7 +29,7 @@ namespace NihaoTyan.Bot
                 ||
                 message.Text.StartsWith("/")
                  )
-                usr[chatId].FSM = "Абвгдейка";
+                usr[message.From.Id].FSM = "Абвгдейка";
             
             var command = message.Text.ToLower();
 
