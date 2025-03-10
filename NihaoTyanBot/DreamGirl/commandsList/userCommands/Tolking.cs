@@ -27,11 +27,11 @@ namespace NihaoTyan.Bot.commandsList.userCommands
         {
             var chatId = message.Chat.Id;
             
-            // Формируем путь к файлу изображения
-            string imagePath = Path.Combine("DreamGirl", "commandsList", "userCommands", "mediaFiles", "nihaoJPEG.jpg");
+            // Путь к файлу анимации (если это GIF, переименуйте его с .mov на .gif)
+            string gifPath = Path.Combine("DreamGirl", "commandsList", "userCommands", "mediaFiles", "nihaoGIF.mov");
             
-            await using var stream = File.OpenRead(imagePath);
-            var inputFile = InputFile.FromStream(stream, "nihaoJPEG.jpg"); // Новый способ создания файла
+            await using var stream = File.OpenRead(gifPath);
+            var inputFile = InputFile.FromStream(stream, "nihaoGIF.mov");
             
             var helpMessage = "Ну что, товарищ, вам нужна моя помощь?\n" +
                               "Не волнуйтесь, сейчас я вам всё объясню и расскажу 😉\n\n" +
@@ -41,8 +41,9 @@ namespace NihaoTyan.Bot.commandsList.userCommands
                               "/stf — помогает распределять ваше время, полезно для тех, у кого нет силы воли.\n\n" +
                               "Я также могу скачать для вас TikTok, YouTube Shorts, Instagram Reels или ВК Клип. Просто отправьте мне ссылку.\n\n" +
                               "Про /help и /start я не рассказываю, так как вы уже их используете! 😅";
-            
-            await botClient.SendPhotoAsync(chatId, inputFile, caption: helpMessage, cancellationToken: cancellationToken);
+        
+            await botClient.SendAnimationAsync(chatId, inputFile, caption: helpMessage, cancellationToken: cancellationToken);
         }
+
     }
 }
