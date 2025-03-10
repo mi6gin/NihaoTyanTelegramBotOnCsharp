@@ -9,7 +9,6 @@ RUN dotnet restore NihaoTyanBot.csproj
 # Копируем все исходники и выполняем сборку
 COPY . .
 RUN dotnet build NihaoTyanBot.csproj -c Release -o /app/build
-RUN chmod +x /app/DreamGirl/commandsList/userCommands/YtDlp/Downloader/Main/Utilities/yt-dlp_linux
 
 # Этап публикации: формируем оптимизированную сборку
 FROM build AS publish
