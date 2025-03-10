@@ -1,5 +1,64 @@
+# Build results
 bin/
 obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider-specific
+.idea/
+*.sln.iml
+
+# OS-specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Visual Studio for Mac
+.vscode/
+*.pidb
+*.userprefs
+
+# NuGet packages
+*.nupkg
+packages/
+# Uncomment if you have legacy `project.json` based projects
+# *.lock.json
+
+# DotCover
+.idea/.dotCover
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+resharper.log
+
+# Rider caches
+.idea/.idea.*
+
+# Logs
+*.log
+
+# Others
+*.vspscc
+*.vssscc
+*.scc
+*.cache
+*.dbmdl
+*.bak
+*.backup
+*.swp
+*.tmp
