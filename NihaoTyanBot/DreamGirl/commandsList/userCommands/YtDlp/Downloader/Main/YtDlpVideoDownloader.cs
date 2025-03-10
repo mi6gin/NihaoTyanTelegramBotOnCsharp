@@ -1,9 +1,12 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using NihaoTyan.Main.Manager;
 using Telegram.Bot;
+using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+
 
 namespace NihaoTyan.Bot.commandsList.userCommands.YtDlp.Main
 {
@@ -16,7 +19,7 @@ namespace NihaoTyan.Bot.commandsList.userCommands.YtDlp.Main
     {
         // Определение пути к yt-dlp в зависимости от ОС
         private static string YtDlpPath => Path.Combine(
-            "DreamGirl", "commandsList", "userCommands", "YtDlp", "Downloader", "Utilities",
+            "DreamGirl", "commandsList", "userCommands", "YtDlp", "Downloader", "Main", "Utilities",
             RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "yt-dlp_linux" :
             RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ? "yt-dlp_macos" :
             RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "yt-dlp.exe" :
@@ -51,6 +54,8 @@ namespace NihaoTyan.Bot.commandsList.userCommands.YtDlp.Main
             }
             catch (Exception ex)
             {
+                var handler = new MyUpdateHandler();
+                await handler.HandleErrorAsync(botClient, ex, HandleErrorSource.HandleUpdateError, cancellationToken);
                 await VideoUtils.SendErrorMessageAsync(botClient, chatId,
                     $"Не удалось скачать видео {videoUrl}\nP.s. ну и лошара \ud83d\ude02\ud83e\udd23\ud83d\ude02");
             }
