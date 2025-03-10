@@ -1,12 +1,15 @@
-﻿services:
+services:
   bot:
+    user: root
     build:
       context: ./NihaoTyanBot
       dockerfile: Dockerfile
     image: nihao-tyan
     volumes:
-      - ./NihaoTyanBot/DreamGirl/commandsList/userCommands/YtDlp/Downloader/Utilities:/app/DreamGirl/commandsList/userCommands/YtDlp/Downloader/Utilities
+      - ./NihaoTyanBot/DreamGirl/commandsList/userCommands/YtDlp/Downloader/Main/Utilities:/app/DreamGirl/commandsList/userCommands/YtDlp/Downloader/Main/Utilities
       - ./NihaoTyanBot/DreamGirl/commandsList/userCommands/mediaFiles:/app/DreamGirl/commandsList/userCommands/mediaFiles
     tty: true
     container_name: nihao-tyan
     restart: on-failure  # Перезапуск только при ошибке
+    command: >
+      sh -c "chmod +x /app/DreamGirl/commandsList/userCommands/YtDlp/Downloader/Main/Utilities/yt-dlp_linux && dotnet NihaoTyanBot.dll"
