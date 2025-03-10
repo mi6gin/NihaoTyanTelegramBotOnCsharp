@@ -11,5 +11,4 @@ services:
     tty: true
     container_name: nihao-tyan
     restart: on-failure  # Перезапуск только при ошибке
-    command: >
-      sh -c "chmod +x /app/DreamGirl/commandsList/userCommands/YtDlp/Downloader/Main/Utilities/yt-dlp_linux && dotnet NihaoTyanBot.dll"
+  
