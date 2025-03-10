@@ -1,0 +1,12 @@
+﻿services:
+  bot:
+    build:
+      context: ./NihaoTyanBot
+      dockerfile: Dockerfile
+    image: nihao-tyan
+    volumes:
+      - ./NihaoTyanBot/DreamGirl/commandsList/userCommands/YtDlp/Downloader/Utilities:/app/DreamGirl/commandsList/userCommands/YtDlp/Downloader/Utilities
+      - ./NihaoTyanBot/DreamGirl/commandsList/userCommands/mediaFiles:/app/DreamGirl/commandsList/userCommands/mediaFiles
+    tty: true
+    container_name: nihao-tyan
+    restart: on-failure  # Перезапуск только при ошибке
