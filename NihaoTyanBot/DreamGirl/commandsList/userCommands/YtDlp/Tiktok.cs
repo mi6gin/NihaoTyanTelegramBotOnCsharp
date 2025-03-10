@@ -1,9 +1,8 @@
-﻿using NihaoTyan.Bot.commandsList.userCommands.YtDlp.Main;
-using System.IO;
+using NihaoTyan.Bot.commandsList.userCommands.YtDlp.Main;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
+using NihaoTyan.Main.Manager;
 using Telegram.Bot;
+using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
@@ -54,6 +53,8 @@ namespace NihaoTyan.Bot.commandsList.userCommands.YtDlp
             }
             catch (Exception ex)
             {
+                var handler = new MyUpdateHandler();
+                await handler.HandleErrorAsync(botClient, ex, HandleErrorSource.HandleUpdateError, cancellationToken);
                 await botClient.SendTextMessageAsync(update.Message.Chat.Id, $"Не получилось скачать\nP.s. ну и лошара \ud83d\ude02\ud83e\udd23\ud83d\ude02", cancellationToken: cancellationToken);
             }
         }
