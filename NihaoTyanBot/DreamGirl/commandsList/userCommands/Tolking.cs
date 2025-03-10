@@ -28,10 +28,10 @@ namespace NihaoTyan.Bot.commandsList.userCommands
             var chatId = message.Chat.Id;
             
             // Путь к файлу анимации (если это GIF, переименуйте его с .mov на .gif)
-            string gifPath = Path.Combine("DreamGirl", "commandsList", "userCommands", "mediaFiles", "nihaoGIF.mov");
+            string gifPath = Path.Combine("DreamGirl", "commandsList", "userCommands", "mediaFiles", "nihaoGIF.mp4");
             
             await using var stream = File.OpenRead(gifPath);
-            var inputFile = InputFile.FromStream(stream, "nihaoGIF.mov");
+            var inputFile = InputFile.FromStream(stream, "nihaoGIF.mp4");
             
             var helpMessage = "Ну что, товарищ, вам нужна моя помощь?\n" +
                               "Не волнуйтесь, сейчас я вам всё объясню и расскажу 😉\n\n" +
