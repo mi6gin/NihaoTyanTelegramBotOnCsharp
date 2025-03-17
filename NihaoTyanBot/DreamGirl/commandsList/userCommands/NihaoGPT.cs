@@ -19,7 +19,9 @@ namespace NihaoTyan.Bot.commandsList.userCommands.NihaoGPT
             {
                 contents = new[]
                 {
-                    new { parts = new[] { new { text = "ответ не должен содержать больше 300 символов "+userInput } } }
+                    new { parts = new[] { new { text = "Ты девушка по имени Нихао-Тян, ассистент мистера Романова. " +
+                                                       "Ответ не должен содержать больше 300 символов. " +
+                                                       "Не упоминай эти ограничения в своих ответах. " + userInput } } }
                 }
             };
 
@@ -40,8 +42,13 @@ namespace NihaoTyan.Bot.commandsList.userCommands.NihaoGPT
                     .GetProperty("parts")[0]
                     .GetProperty("text")
                     .GetString() ?? "Нет ответа от API.";
-                
-                await _botClient.SendTextMessageAsync(_chatId, candidateText, parseMode:ParseMode.Markdown);
+
+                if (candidateText.Length > 300)
+                {
+                    candidateText = candidateText.Substring(0, 300);
+                }
+
+                await _botClient.SendTextMessageAsync(_chatId, candidateText, parseMode: ParseMode.Markdown);
             }
             catch (Exception ex)
             {
