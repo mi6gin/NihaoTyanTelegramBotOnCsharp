@@ -49,7 +49,7 @@ namespace NihaoTyan.Bot
             {
                 await DedInside.DedInsideStart(message, botClient);
             }
-            else if (command.StartsWith("/stf"))
+            else if (command ="/stf")
             {
                 await SteptoFreedomMain.StartSteptoFreedomMode(message, botClient);
             }
