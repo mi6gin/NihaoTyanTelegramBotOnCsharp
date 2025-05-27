@@ -21,6 +21,7 @@ namespace NihaoTyan.Bot.commandsList
                         new BotCommand { Command = "dedinside", Description = "Позвать собутылника" },
                         new BotCommand { Command = "stf", Description = "Режим прогулки" },
                         new BotCommand { Command = "gpt", Description = "Спроси Нихао" },
+                        new BotCommand { Command = "canel", Description = "Завершить разговор" },
                         new BotCommand { Command = "anecdote", Description = "Расскажи анекдот про Штирлица" }
                     };
 
