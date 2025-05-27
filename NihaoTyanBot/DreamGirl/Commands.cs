@@ -37,6 +37,10 @@ namespace NihaoTyan.Bot
             {
                 await Tolking.Start(message, botClient);
             }
+            if (command.StartsWith("/canel"))
+            {
+                usr[message.From.Id].FSM = "Абвгдейка";
+            }
             else if (command.StartsWith("/help"))
             {
                 await Tolking.Help(message, botClient);
